@@ -1,3 +1,14 @@
+// While it may not seem imperative for smaller programs, you should get in the habit
+// linking to a separate js file and also wrapping your js code in either a 
+// $(document).ready(function(){
+//  // code goes here
+// })
+// or an IIFE (immediately invoked function expression)
+// ;(function(){
+//  // code goes here
+// })()
+// One of the most important reasons for that is security - because right now your global variables
+// can be tampered with through the console by a malicious visitor to your trivia game 😮
 
 
 
@@ -102,15 +113,25 @@
   
   function createRadios(index) {
     var radioList = $('<ul>');
-    var item;
-    var input = '';
-    for (var i = 0; i < questions[index].choices.length; i++) {
-      item = $('<li>');
-      input = '<input type="radio" name="answer" value=' + i + ' />';
-      input += questions[index].choices[i];
+    // var item;
+    // var input = '';
+    // since the question's choices is an array, you can actually use the native .forEach method here
+    // this also allows you to scope your item and input variables within that functional context
+    questions[index].choices.forEach(function(choice, idx) {
+      var item = $('<li>');
+      var input = '<input type="radio" name="answer" value=' + idx + ' />';
+      input += choice;
       item.append(input);
       radioList.append(item);
-    }
+    });
+
+    // for (var i = 0; i < questions[index].choices.length; i++) {
+    //   item = $('<li>');
+    //   input = '<input type="radio" name="answer" value=' + i + ' />';
+    //   input += questions[index].choices[i];
+    //   item.append(input);
+    //   radioList.append(item);
+    // }
     return radioList;
   }
   
