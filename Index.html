@@ -2,8 +2,16 @@
 <html>
 	<head>
 		<title> TriviaGame </title>
+    <!-- You need to make sure you have a style.css file if you want to load it. -->
 		<link type='text/css' rel='stylesheet' href="assets/css/style.css">
-           <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- 
+      You generally want to stick javascript script tags at the bottom of your body.
+      This is because they will stop the rest of the html from being parsed and rendered
+      until after the script has finished downloading and it's best practice to show 
+      something to the user asap even if it's not initially interactive
+      (most users won't even notice). Also, you only need to load your app.js file once 🙃
+     -->
+     <!-- <script type="text/javascript" src="assets/javascript/app.js"></script> -->
           
 	<body>
 		<div id='container'>
